@@ -2,6 +2,7 @@
   <div id="app">
     <p>Profiles Listss</p>
     <div class="section">
+      <!-- SEARCHING INPUT -->
       <div class="flex-row">
         <label class="label" for="filter">Find profile:</label>
         <input class="input" v-model="search" placeholder="Search profile..." />
@@ -30,6 +31,7 @@
       </div>
     </div>
 
+    <!-- ADD PROFILE -->
     <div class="section">
       <p class="header">Add new profile:</p>
       <form action="#" ref="clearForm" @submit.prevent="addProfile()">
@@ -123,6 +125,7 @@ export default {
         return b.likes - a.likes;
       });
     },
+    // PROFILE FORM SUBMIT
     addProfile() {
       this.profiles.push({
         name: this.name,
@@ -133,6 +136,7 @@ export default {
     },
   },
   computed: {
+    // SEARCH SHORTING
     searchProfile() {
       return this.profiles.filter((profile) => {
         return profile.name.toLowerCase().match(this.search);
