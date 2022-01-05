@@ -4,7 +4,7 @@
     <div class="section">
       <div class="flex-row">
         <label class="label" for="filter">Find profile:</label>
-        <input class="input" />
+        <input class="input" v-model="search" placeholder="Search profile..." />
       </div>
       <div class="buttons">
         <button @click="sortAsc">▲</button>
@@ -12,7 +12,7 @@
       </div>
 
       <ProfileCard
-        v-for="(profile, index) in profiles"
+        v-for="(profile, index) in searchProfile"
         :key="index"
         :profile="profile"
         class="profile"
@@ -32,19 +32,39 @@
 
     <div class="section">
       <p class="header">Add new profile:</p>
-      <div class="flex-row">
-        <label class="label">Name:</label>
-        <input class="input" v-model="name" />
-      </div>
-      <div class="flex-row">
-        <label class="label" for="filter">Email:</label>
-        <input class="input" v-model="email" />
-      </div>
-      <div class="flex-row">
-        <label class="label">Specialisation:</label>
-        <input class="input" v-model="description" />
-      </div>
-      <button @click="addProfile">Add</button>
+      <form action="#" ref="clearForm" @submit.prevent="addProfile()">
+        <div class="flex-row">
+          <label class="label">Name:</label>
+          <input
+            type="text"
+            name="name"
+            class="input"
+            v-model="name"
+            placeholder="Write Name"
+          />
+        </div>
+        <div class="flex-row">
+          <label class="label" for="filter">Email:</label>
+          <input
+            type="mail"
+            name="email"
+            class="input"
+            v-model="email"
+            placeholder="Write Email"
+          />
+        </div>
+        <div class="flex-row">
+          <label class="label">Specialisation:</label>
+          <input
+            type="text"
+            name="description"
+            class="input"
+            v-model="description"
+            placeholder="Write Description"
+          />
+        </div>
+        <button type="submit">Add</button>
+      </form>
     </div>
   </div>
 </template>
@@ -64,6 +84,7 @@ export default {
       name: "",
       email: "",
       description: "",
+      search: "",
       profiles: [
         {
           id: 1,
@@ -107,6 +128,14 @@ export default {
         name: this.name,
         email: this.email,
         description: this.description,
+      });
+      this.$refs.clearForm.reset();
+    },
+  },
+  computed: {
+    searchProfile() {
+      return this.profiles.filter((profile) => {
+        return profile.name.toLowerCase().match(this.search);
       });
     },
   },
