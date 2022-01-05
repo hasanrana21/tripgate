@@ -38,13 +38,13 @@
       </div>
       <div class="flex-row">
         <label class="label" for="filter">Email:</label>
-        <input class="input" />
+        <input class="input" v-model="email" />
       </div>
       <div class="flex-row">
         <label class="label">Specialisation:</label>
-        <input class="input" />
+        <input class="input" v-model="description" />
       </div>
-      <button>Add</button>
+      <button @click="addProfile">Add</button>
     </div>
   </div>
 </template>
@@ -61,6 +61,9 @@ export default {
 
   data() {
     return {
+      name: "",
+      email: "",
+      description: "",
       profiles: [
         {
           id: 1,
@@ -97,6 +100,13 @@ export default {
     sortDesc() {
       this.profiles.sort(function (a, b) {
         return b.likes - a.likes;
+      });
+    },
+    addProfile() {
+      this.profiles.push({
+        name: this.name,
+        email: this.email,
+        description: this.description,
       });
     },
   },

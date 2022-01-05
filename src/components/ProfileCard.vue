@@ -1,23 +1,23 @@
 <template>
   <div class="profile">
     <div class="card">
-      <DoctorIcon class="avatar"/>
+      <DoctorIcon class="avatar" />
       <div class="data">
         <div class="profile-content">
           <div>
-            <strong>{{profile.name}}</strong>
-            <a :href="profile.email" class="email">{{profile.email}}</a>
+            <strong>{{ profile.name }}</strong>
+            <a :href="profile.email" class="email">{{ profile.email }}</a>
           </div>
-          <div class="description">{{profile.description}}</div>
+          <div class="description">{{ profile.description }}</div>
         </div>
         <div class="likes">
           <span class="likes-icon">💚</span>
-          <span class="likes-value">{{profile.likes}}</span>
+          <span class="likes-value">{{ profile.likes }}</span>
         </div>
       </div>
     </div>
     <div class="comment">
-      <input class="comment-input" placeholder="Write your comment...">
+      <input class="comment-input" placeholder="Write your comment..." />
     </div>
   </div>
 </template>
@@ -29,15 +29,15 @@ export default {
   name: "ProfileCard",
 
   components: {
-    DoctorIcon
+    DoctorIcon,
   },
 
   props: {
     profile: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 
