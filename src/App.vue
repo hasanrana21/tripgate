@@ -33,7 +33,7 @@
 
     <!-- ADD PROFILE -->
     <div class="section">
-      <p class="header">Add new profile:</p>
+      <p class="header">Add new profile This to work in new :</p>
       <form action="#" ref="clearForm" @submit.prevent="addProfile()">
         <div class="flex-row">
           <label class="label">Name:</label>
